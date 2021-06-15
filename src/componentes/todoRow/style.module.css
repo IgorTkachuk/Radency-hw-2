@@ -1,0 +1,7 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  background-color: lightgray;
+  margin-top: 5px;
+  padding: 3px;
+}
