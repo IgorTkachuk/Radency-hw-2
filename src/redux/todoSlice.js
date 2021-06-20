@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const todoSlice = createSlice({
-  name: 'todo',
+  name: "todo",
   initialState: [
     {
       name: "Shopping list",
@@ -33,9 +33,10 @@ export const todoSlice = createSlice({
   ],
   reducers: {
     addNote: (state, action) => {
-      state.push(action.payload)
+      state.push(action.payload);
     },
     removeNote: (state, action) => {
+      console.log(action);
       const idx = state.findIndex((el) => el._id === action.payload);
       state.splice(idx, 1);
     },
@@ -43,10 +44,10 @@ export const todoSlice = createSlice({
     archiveNote: (state, action) => {
       const idx = state.findIndex((el) => el._id === action.payload);
       state[idx]._archived = !state[idx]._archived;
-    }
-  }
-  
-})
+    },
+  },
+});
 
-export const {addNote, removeNote, updateNote, archiveNote} = todoSlice.actions;
+export const { addNote, removeNote, updateNote, archiveNote } =
+  todoSlice.actions;
 export default todoSlice.reducer;
