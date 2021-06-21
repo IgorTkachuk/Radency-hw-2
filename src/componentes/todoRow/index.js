@@ -12,8 +12,8 @@ import {
 import styles from "./style.module.css";
 import ToDoRowNav from "../todoRowNav";
 
-export default function TodoRow({ data }) {
-  const { name, created, category, content, _id } = data;
+export default function TodoRow({ data, showModal, setNoteIdForChange }) {
+  const { name, created, category, content, _id, _archived } = data;
   const dispatch = useDispatch();
 
   return (
@@ -23,7 +23,13 @@ export default function TodoRow({ data }) {
       <ToDoCell data={category} />
       <ToDoCell data={content} />
       <ToDoRowNav>
-        <FontAwesomeIcon icon={faPen} />
+        <FontAwesomeIcon
+          icon={faPen}
+          onClick={() => {
+            setNoteIdForChange(_id);
+            showModal(true);
+          }}
+        />
         <FontAwesomeIcon
           icon={faTrashAlt}
           onClick={() => dispatch(removeNote(_id))}
@@ -31,6 +37,7 @@ export default function TodoRow({ data }) {
         <FontAwesomeIcon
           icon={faArchive}
           onClick={() => dispatch(archiveNote(_id))}
+          className={`${_archived ? styles.archived : ""}`}
         />
       </ToDoRowNav>
     </div>

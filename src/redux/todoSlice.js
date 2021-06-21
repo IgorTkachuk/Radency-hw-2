@@ -40,7 +40,14 @@ export const todoSlice = createSlice({
       const idx = state.findIndex((el) => el._id === action.payload);
       state.splice(idx, 1);
     },
-    updateNote: (state, action) => {},
+    updateNote: (state, action) => {
+      const { _id, ...rest } = action.payload;
+      const idx = state.findIndex((el) => el._id === _id);
+      state[idx] = {
+        ...state[idx],
+        ...rest,
+      };
+    },
     archiveNote: (state, action) => {
       const idx = state.findIndex((el) => el._id === action.payload);
       state[idx]._archived = !state[idx]._archived;
