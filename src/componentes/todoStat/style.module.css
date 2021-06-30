@@ -1,0 +1,22 @@
+.categoryStat {
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.categoryStatRow {
+  display: flex;
+  padding: 3px;
+  background-color: lightgray;
+  margin-top: 3px;
+}
+
+.categoryStatCaption {
+  background-color: grey;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.categoryStatCell {
+  width: 170px;
+}
